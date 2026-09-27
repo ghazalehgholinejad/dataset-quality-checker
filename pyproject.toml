@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dataset-quality-checker"
+version = "0.1.0"
+description = "Audit image datasets for corrupt files, exact duplicates, and split leakage"
+requires-python = ">=3.10"
+dependencies = ["Pillow>=10,<13"]
+license = {file = "LICENSE"}
+
+[project.scripts]
+dataset-check = "dataset_quality.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["dataset_quality*"]

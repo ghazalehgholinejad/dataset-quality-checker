@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Image dataset quality report</title>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#f3f5f8;color:#172638;font:15px/1.6 system-ui,sans-serif}
+main{max-width:1120px;margin:0 auto;padding:48px 24px}.eyebrow{color:#006859;font-size:12px;letter-spacing:2px;font-weight:750}
+h1{font-size:38px;line-height:1.15;margin:12px 0}h2{font-size:22px;margin:0 0 14px}h3{font-size:15px;margin:0 0 8px}
+.muted{color:#576779}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:28px 0}
+.card,section{background:white;border:1px solid #dce3eb;border-radius:12px;padding:22px}.card span{font-size:10px;letter-spacing:1px;color:#576779}
+.card strong{display:block;font-size:36px}section{margin-top:18px}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;text-align:left}
+th{color:#576779;font-size:11px;text-transform:uppercase;letter-spacing:1px}th,td{padding:12px 10px;border-bottom:1px solid #e6ebf1;vertical-align:top}
+td:first-child{overflow-wrap:anywhere}.group{padding:16px;background:#f5f8fb;border-radius:8px;margin:12px 0}
+.tag{color:#9a3412;background:#ffedd5;border-radius:4px;padding:3px 7px;font-size:10px;margin-left:10px}code,pre{font:13px/1.6 ui-monospace,monospace}
+code{overflow-wrap:anywhere}pre{white-space:pre-wrap}ul{margin:0;padding-left:20px}footer{margin-top:24px;font-size:12px;color:#576779}
+@media(max-width:640px){main{padding:24px 12px}h1{font-size:30px}.cards{grid-template-columns:repeat(2,1fr)}section{padding:16px}}
+</style></head><body><main>
+<div class="eyebrow">DATASET QUALITY CHECKER / LOCAL AUDIT</div>
+<h1>Know your images before training.</h1>
+<p class="muted">Read-only inspection for unreadable files, exact copies and dimension warnings.</p>
+<div class="cards"><div class="card"><span>FILES SCANNED</span><strong>7</strong></div><div class="card"><span>READABLE</span><strong>6</strong></div><div class="card"><span>NEED REVIEW</span><strong>6</strong></div><div class="card"><span>CROSS-SPLIT COPIES</span><strong>3</strong></div></div>
+<section><h2>Duplicate review</h2><p class="muted">Cross-split copies are potential leakage. Review before changing a dataset. Byte and pixel groups can overlap.</p><div class="group"><h3>Identical bytes <span class="tag">CROSS-SPLIT</span></h3><ul><li><code>test/scene-copy.png</code></li><li><code>train/scene.png</code></li></ul></div><div class="group"><h3>Identical decoded pixels <span class="tag">CROSS-SPLIT</span></h3><ul><li><code>test/scene-copy.png</code></li><li><code>train/scene.png</code></li><li><code>val/scene-metadata.png</code></li></ul></div></section>
+<section><h2>File inventory</h2><div class="scroll"><table><thead><tr><th>Relative path</th><th>Split</th><th>Status</th><th>Dimensions</th><th>Flags</th></tr></thead><tbody><tr><td>test/broken.jpg</td><td>test</td><td>unreadable</td><td>—</td><td>unreadable</td></tr><tr><td>test/scene-copy.png</td><td>test</td><td>ok</td><td>256 × 192</td><td>duplicate</td></tr><tr><td>train/scene.png</td><td>train</td><td>ok</td><td>256 × 192</td><td>duplicate</td></tr><tr><td>train/tiny.png</td><td>train</td><td>ok</td><td>24 × 24</td><td>small_image</td></tr><tr><td>train/unique.png</td><td>train</td><td>ok</td><td>200 × 200</td><td>—</td></tr><tr><td>val/panorama.png</td><td>val</td><td>ok</td><td>800 × 80</td><td>extreme_aspect</td></tr><tr><td>val/scene-metadata.png</td><td>val</td><td>ok</td><td>256 × 192</td><td>duplicate</td></tr></tbody></table></div></section>
+<section><h2>Dimension distribution</h2><table><thead><tr><th>Width × height</th><th>Images</th></tr></thead><tbody><tr><td>200 x 200</td><td>1</td></tr><tr><td>24 x 24</td><td>1</td></tr><tr><td>256 x 192</td><td>3</td></tr><tr><td>800 x 80</td><td>1</td></tr></tbody></table></section>
+<section><h2>Audit settings</h2><pre>{
+  &quot;min_side&quot;: 64,
+  &quot;max_aspect&quot;: 4.0,
+  &quot;max_pixels&quot;: 40000000,
+  &quot;splits&quot;: [
+    &quot;train&quot;,
+    &quot;val&quot;,
+    &quot;test&quot;
+  ]
+}</pre><p class="muted">Only supported extensions are counted. No perceptual similarity, label validation or model accuracy is measured. Small or unusually shaped images are warnings, not automatic defects.</p></section>
+<footer>Dataset Quality Checker 0.1.0 · Python 3.12.14 · Pillow 12.3.0 · No source files modified.</footer>
+</main></body></html>

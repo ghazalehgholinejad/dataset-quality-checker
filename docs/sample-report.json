@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "tool_version": "0.1.0",
+  "environment": {
+    "python": "3.12.14",
+    "pillow": "12.3.0"
+  },
+  "settings": {
+    "min_side": 64,
+    "max_aspect": 4.0,
+    "max_pixels": 40000000,
+    "splits": [
+      "train",
+      "val",
+      "test"
+    ]
+  },
+  "summary": {
+    "files_scanned": 7,
+    "readable_images": 6,
+    "unreadable_files": 1,
+    "skipped_images": 0,
+    "flagged_files": 6,
+    "duplicate_files": 3,
+    "byte_duplicate_groups": 1,
+    "pixel_duplicate_groups": 1,
+    "cross_split_files": 3
+  },
+  "dimensions": {
+    "200 x 200": 1,
+    "24 x 24": 1,
+    "256 x 192": 3,
+    "800 x 80": 1
+  },
+  "byte_duplicates": [
+    {
+      "sha256": "f91b9578d4527c2bb27231165b77e9c97e4b0df2c39111e617f85afc91a1c0c0",
+      "paths": [
+        "test/scene-copy.png",
+        "train/scene.png"
+      ],
+      "splits": [
+        "test",
+        "train"
+      ],
+      "cross_split": true
+    }
+  ],
+  "pixel_duplicates": [
+    {
+      "sha256": "c58525a31619e6c1e0eaf12f78de393d5af6ad097277b4281dab85094a6c7650",
+      "paths": [
+        "test/scene-copy.png",
+        "train/scene.png",
+        "val/scene-metadata.png"
+      ],
+      "splits": [
+        "test",
+        "train",
+        "val"
+      ],
+      "cross_split": true
+    }
+  ],
+  "files": [
+    {
+      "path": "test/broken.jpg",
+      "split": "test",
+      "status": "unreadable",
+      "flags": [
+        "unreadable"
+      ],
+      "bytes": 44,
+      "file_sha256": "8bef9ff9cfe913ff47c7cfc375467cae7c773ca9fbd1d59d9921e21a0f5eceda",
+      "error": "UnidentifiedImageError"
+    },
+    {
+      "path": "test/scene-copy.png",
+      "split": "test",
+      "status": "ok",
+      "flags": [],
+      "bytes": 946,
+      "file_sha256": "f91b9578d4527c2bb27231165b77e9c97e4b0df2c39111e617f85afc91a1c0c0",
+      "format": "PNG",
+      "original_mode": "RGB",
+      "width": 256,
+      "height": 192,
+      "pixel_sha256": "c58525a31619e6c1e0eaf12f78de393d5af6ad097277b4281dab85094a6c7650"
+    },
+    {
+      "path": "train/scene.png",
+      "split": "train",
+      "status": "ok",
+      "flags": [],
+      "bytes": 946,
+      "file_sha256": "f91b9578d4527c2bb27231165b77e9c97e4b0df2c39111e617f85afc91a1c0c0",
+      "format": "PNG",
+      "original_mode": "RGB",
+      "width": 256,
+      "height": 192,
+      "pixel_sha256": "c58525a31619e6c1e0eaf12f78de393d5af6ad097277b4281dab85094a6c7650"
+    },
+    {
+      "path": "train/tiny.png",
+      "split": "train",
+      "status": "ok",
+      "flags": [
+        "small_image"
+      ],
+      "bytes": 101,
+      "file_sha256": "8825a484ce62f56e4858c24337dce2ba38d638381776019832918da859c90409",
+      "format": "PNG",
+      "original_mode": "RGB",
+      "width": 24,
+      "height": 24,
+      "pixel_sha256": "c33c42f2502720eb1c64ebdd41a7005a2e7146cbdd46537c55d0566d64579ecb"
+    },
+    {
+      "path": "train/unique.png",
+      "split": "train",
+      "status": "ok",
+      "flags": [],
+      "bytes": 593,
+      "file_sha256": "e17a081f2b4c1a7b842937e02706ad35afce5be5ac4f9da50a101f8eb06463ad",
+      "format": "PNG",
+      "original_mode": "RGB",
+      "width": 200,
+      "height": 200,
+      "pixel_sha256": "343b204c8f53530e1bbd858d6fdf98315dfde368bfd4804bb82475b57fc3c00f"
+    },
+    {
+      "path": "val/panorama.png",
+      "split": "val",
+      "status": "ok",
+      "flags": [
+        "extreme_aspect"
+      ],
+      "bytes": 449,
+      "file_sha256": "fb26ab69dc3d3145605bfca7b3aef07651f9364787cd3a111e80626fc7340b30",
+      "format": "PNG",
+      "original_mode": "RGB",
+      "width": 800,
+      "height": 80,
+      "pixel_sha256": "2a204baadf4331c1a9b825140063d4bb64539416e6d74748c4ca8e6c02ec6ff0"
+    },
+    {
+      "path": "val/scene-metadata.png",
+      "split": "val",
+      "status": "ok",
+      "flags": [],
+      "bytes": 994,
+      "file_sha256": "08aa3e9437cfac0f6d99ec83337dbb4fc8b6fcf08c745b62480868b5ac2e4295",
+      "format": "PNG",
+      "original_mode": "RGB",
+      "width": 256,
+      "height": 192,
+      "pixel_sha256": "c58525a31619e6c1e0eaf12f78de393d5af6ad097277b4281dab85094a6c7650"
+    }
+  ]
+}
